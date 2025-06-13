@@ -170,7 +170,7 @@ const PlaceOrder = () => {
                   required
                  className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
                 />
-                <div className="sm:flex  gap-3">
+                <div className="flex  gap-3">
                   <input
                     type="text"
                     placeholder="Street"
@@ -199,7 +199,7 @@ const PlaceOrder = () => {
                   required
                  className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
                 />
-                <div className="sm:flex  gap-3">
+                <div className="flex  gap-3">
                   <input
                     type="text"
                     placeholder="Country"
