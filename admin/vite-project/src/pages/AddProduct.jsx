@@ -13,8 +13,10 @@ const AddProduct = ({token}) => {
   const [price, setPrice] = useState("");
   const [sizes, setSizes] = useState("");
   const [Bestseller, setBestseller] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const SubmitHandler = async (e) => {
+     setLoading(true);
     e.preventDefault();
      console.log(name, description, category, subCategory, price, sizes, Bestseller );
     try {
@@ -46,6 +48,8 @@ const AddProduct = ({token}) => {
       setBestseller(false);
     } catch (error) {
       toast.error(error.message);
+    } finally {
+       setLoading(false);
     }
   };
 
@@ -196,8 +200,16 @@ const AddProduct = ({token}) => {
             />
             <h1 className="sm:text-[18px]">Add to Bestseller</h1>
           </div>
-          <button className="my-5 text-white bg-black hover:bg-gray-800 active:bg-gray-950 cursor-pointer sm:py-2 sm:px-20 px-24 py-1">
-            ADD
+          <button
+            type="submit"
+            disabled={loading}
+            className="my-5 text-white bg-black hover:bg-gray-800 active:bg-gray-950 cursor-pointer sm:py-2 sm:px-20 px-24 py-1 flex justify-center items-center gap-2"
+          >
+            {loading ? (
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            ) : (
+              "ADD"
+            )}
           </button>
         </form>
       </div>  </>

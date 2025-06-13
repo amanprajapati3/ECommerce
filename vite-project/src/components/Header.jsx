@@ -32,11 +32,11 @@ const LogOutFunction = () =>{
 
   return (
     <>
-      <div className="flex sticky z-10 top-0 backdrop-blur-2xl justify-between px-5 lg:px-16 pt-2 sm:pt-5  sm:mt-0 sm:px-10">
+      <div className="flex sticky z-10 top-0 backdrop-blur-2xl justify-between px-5 lg:px-16 pt-2 sm:pt-5 text-sm sm:mt-0 sm:px-10">
         {/* logo */}
         <div>
           <NavLink to="/">
-            <img src={assets.logo} alt="" className="md:w-48 w-40" />
+            <img src={assets.logo} alt="" className="md:w-36 w-32" />
           </NavLink>
         </div>
 
@@ -83,12 +83,12 @@ const LogOutFunction = () =>{
         <div className="flex gap-2 sm:gap-5 mt-2 h-fit">
           <button
             onClick={HandleSearchBar}
-            className="text-2xl h-fit hover:scale-125  duration-300 transition-all cursor-pointer"
+            className="text-xl h-fit hover:scale-125  duration-300 transition-all cursor-pointer"
           >
             {search_bar ? <IoSearchSharp /> : <RxCross1 />}
           </button>
           <div className="group relative hidden md:block">
-            <button className="text-2xl cursor-pointer hover:font-bold">
+            <button className="text-xl cursor-pointer hover:font-bold">
               <NavLink to={"/login"}>
                 <IoPersonOutline />
               </NavLink>
@@ -110,7 +110,7 @@ const LogOutFunction = () =>{
           </div>
           <div>
             <NavLink to="/cart">
-              <button className="text-3xl hover:scale-125 duration-300 transition-all cursor-pointer">
+              <button className="text-2xl hover:scale-125 duration-300 transition-all cursor-pointer">
                 <FaCartArrowDown />
               </button>
               <p className="relative w-fit ml-5 -mt-5 bg-black text-white p-1 text-[10px] rounded-2xl">
@@ -122,30 +122,30 @@ const LogOutFunction = () =>{
       </div>
 
       <ul
-         className={`fixed top-[55px] md:hidden right-0 h-screen bg-gray-200 z-40 w-[70%] transform transition-transform duration-500 pt-3 text-center ease-in-out
+         className={`fixed top-[45px] md:hidden right-0 h-screen bg-transparent backdrop-blur-2xl text-gray-900 z-40 w-[70%] transform transition-transform duration-500 pt-2 text-center ease-in-out
           ${
             IsMenuOpen
               ? "translate-x-full " : "translate-x-0 shadow-2xl shadow-black"
               
           }`}
       >
-        <li className="border-b-2 border-b-gray-400 hover:border-b-gray-900 hover:font-bold transition-all duration-300 py-3 ">
-          <NavLink to="/">Home</NavLink>
+        <li className=" transition-all duration-300 py-2 ">
+          <NavLink to="/"><p>Home</p></NavLink>
         </li>
-        <li className="border-b-2 border-b-gray-400 hover:border-b-gray-900 hover:font-bold transition-all duration-300 py-3 ">
-          <NavLink to="/collection">Collection</NavLink>
+        <li className=" transition-all duration-300 py-2 ">
+          <NavLink to="/collection"><p>Collection</p></NavLink>
         </li>  
-        <li className="border-b-2 border-b-gray-400 hover:border-b-gray-900 hover:font-bold transition-all duration-300 py-3 ">
-          <NavLink to="/about">About</NavLink>
+        <li className=" transition-all duration-300 py-2 ">
+          <NavLink to="/about"><p>About</p></NavLink>
         </li>
-        <li className="border-b-2 border-b-gray-400 hover:border-b-gray-900 hover:font-bold transition-all duration-300 py-3 ">
-          <NavLink to="/contact">Contact</NavLink>
+        <li className=" transition-all duration-300 py-2 ">
+          <NavLink to="/contact"><p>Contact</p></NavLink>
         </li>
-         <li className="border-b-2 border-b-gray-400 hover:border-b-gray-900 hover:font-bold transition-all duration-300 py-3 ">
-          <NavLink to="/profile">My profile</NavLink>
+         <li className=" transition-all duration-300 py-2 ">
+          <NavLink to="/profile"><p>My profile</p></NavLink>
         </li>
-        <li className="border-b-2 border-b-gray-400 hover:border-b-gray-900 hover:font-bold transition-all duration-300 py-3 ">
-         <NavLink to="/order">Order</NavLink>
+        <li className=" transition-all duration-300 py-2 ">
+         <NavLink to="/order"><p>Order</p></NavLink>
         </li>
       </ul>
 
@@ -153,7 +153,7 @@ const LogOutFunction = () =>{
         className={
           search_bar
             ? `w-0 h-0 scale-x-0`
-            : `flex scale-x-100 justify-center duration-600 transition-all `
+            : `flex scale-x-100 justify-center duration-600 w-full transition-all`
         }
       >
         <input
@@ -161,7 +161,7 @@ const LogOutFunction = () =>{
           placeholder="Search Product"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="p-2 border-2 border-gray-400 focus:border-gray-500 focus:bg-gray-200 outline-none rounded-xl text-xl "
+          className="p-2 border-b-2 bg-gray-400 border-gray-400 focus:border-gray-500 focus:bg-gray-300 outline-none   "
         />
       </div>
     </>

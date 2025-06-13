@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import ProductItems from "../components/ProductItems";
+import Loader from "../components/Loader";
 
 const Mens = () => {
-
-const { products } = useContext(ShopContext);
+  const { products, loader } = useContext(ShopContext);
 
   const Men = products.filter((items) => items.category === "Men");
-    
+
   return (
     <>
-     <div className="sm:px-10  pt-5 py-5 bg-gradient-to-br via-gray-300 to-gray-500">
+      <div className="sm:px-10  pt-5 py-5 bg-gradient-to-br via-gray-300 to-gray-500">
         <div className="flex justify-center my-3">
           <h1 className="text-center text-3xl font-mono font-semibold">
             Mens Clothes
@@ -21,22 +21,26 @@ const { products } = useContext(ShopContext);
           iure. Lorem ipsum dolor sit amet.
         </p>
 
-      <div className="flex justify-center text-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
-          {Men.map((item, index) => (
-            <div className=" ">
-              <ProductItems
-                key={index}
-                id={item._id}
-                name={item.name}
-                image={item.image}
-                price={item.price}
-              />
-            </div>
-          ))}
+        <div className="flex justify-center text-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
+          {loader ? (
+            <Loader />
+          ) : (
+            Men.map((item, index) => (
+              <div className=" ">
+                <ProductItems
+                  key={index}
+                  id={item._id}
+                  name={item.name}
+                  image={item.image}
+                  price={item.price}
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Mens
+export default Mens;

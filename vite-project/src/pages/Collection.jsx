@@ -3,9 +3,10 @@ import { ShopContext } from "../context/ShopContext";
 import ProductItems from "../components/ProductItems";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+import Loader from "../components/Loader";
 
 const Collection = () => {
-  const { products, search } = useContext(ShopContext);
+  const { products, search, loader } = useContext(ShopContext);
 
   const [filterProduct, setFilterProduct] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
@@ -169,7 +170,7 @@ const Collection = () => {
                 onClick={() => setShowMobileFilters((prev) => !prev)}
                 className=""
               >
-                {showMobileFilters ?<IoIosArrowUp /> : <IoIosArrowDown />  }
+                {showMobileFilters ? <IoIosArrowUp /> : <IoIosArrowDown />}
               </button>
             </div>
 
@@ -209,17 +210,21 @@ const Collection = () => {
           </div>
 
           <div className="flex justify-center text-center mb-10 flex-wrap sm:gap-6 gap-2">
-            {filterProduct.map((item, index) => (
-              <div className=" ">
-                <ProductItems
-                  key={index}
-                  id={item._id}
-                  name={item.name}
-                  image={item.image}
-                  price={item.price}
-                />
-              </div>
-            ))}
+            {loader ? (
+              <Loader />
+            ) : (
+              filterProduct.map((item, index) => (
+                <div className=" ">
+                  <ProductItems
+                    key={index}
+                    id={item._id}
+                    name={item.name}
+                    image={item.image}
+                    price={item.price}
+                  />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

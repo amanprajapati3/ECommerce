@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import ProductItems from "../components/ProductItems";
+import Loader from "../components/Loader";
 
 const Kids = () => {
-  const { products } = useContext(ShopContext);
+  const { products, loader } = useContext(ShopContext);
 
   const kids = products.filter((items) => items.category === "Kids");
 
@@ -20,18 +21,22 @@ const Kids = () => {
           iure. Lorem ipsum dolor sit amet.
         </p>
 
-      <div className="flex justify-center text-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
-          {kids.map((item, index) => (
-            <div className=" ">
-              <ProductItems
-                key={index}
-                id={item._id}
-                name={item.name}
-                image={item.image}
-                price={item.price}
-              />
-            </div>
-          ))}
+        <div className="flex justify-center text-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
+          {loader ? (
+            <Loader />
+          ) : (
+            kids.map((item, index) => (
+              <div className=" ">
+                <ProductItems
+                  key={index}
+                  id={item._id}
+                  name={item.name}
+                  image={item.image}
+                  price={item.price}
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
     </>

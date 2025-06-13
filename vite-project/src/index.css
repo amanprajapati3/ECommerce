@@ -4,6 +4,9 @@ a.active hr{
     display: block;
     scale:1;
 }
+a.active p{
+    color: purple;
+}
 a:hover hr{
       display: block;
       scale: 1;

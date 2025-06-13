@@ -11,6 +11,7 @@ const ShopContextProvider = ({ children }) => {
   const backend_url = import.meta.env.VITE_BACKEND_URL;
   const [products, setProduct] = useState([]);
   const [token, setToken] = useState('');
+  const [loader, setLoader] = useState(false);
 
   // add to cart function
   const addToCart = async (itemId, size) => {
@@ -108,6 +109,7 @@ const ShopContextProvider = ({ children }) => {
   // data fetching of product from api
   const ProductData = async() =>{
     try {
+      setLoader(true);
       console.log(backend_url);
     const response = await axios.get(backend_url + '/api/product/list');
     if(response.data.success){
@@ -120,6 +122,8 @@ const ShopContextProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
       toast.error("fetching problem")
+    } finally{
+      setLoader(false);
     }
   }
 
@@ -166,6 +170,7 @@ const ShopContextProvider = ({ children }) => {
         backend_url,
         token,
         setToken,
+        loader
       }}
     >
       {children}
