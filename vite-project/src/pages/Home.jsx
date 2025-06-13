@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 const Home = () => {
   const { products } = useContext(ShopContext);
 
-  const mens = products.filter((men) => men.category === "Men");
+  const men = products.filter((men) => men.category === "Men");
   const women = products.filter((women) => women.category === "Women");
   const kid = products.filter((kid) => kid.category === "Kids");
 
@@ -53,7 +53,7 @@ const Home = () => {
         </p>
 
         <div className="flex justify-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
-          {mens.slice(0, 6).map((item, index) => (
+          {men.slice(0, 6).map((item, index) => (
             <div className=" ">
               <ProductItems
                 key={index}
