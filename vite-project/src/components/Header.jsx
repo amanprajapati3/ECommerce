@@ -32,16 +32,16 @@ const LogOutFunction = () =>{
 
   return (
     <>
-      <div className="flex sticky z-10 top-0 backdrop-blur-2xl justify-between px-5 lg:px-16 pt-2 sm:pt-5 text-sm sm:mt-0 sm:px-10">
+      <div className="flex sticky z-10 top-0 backdrop-blur-2xl justify-between px-5 lg:px-16 pt-2 sm:pt-5 text-[12px] sm:mt-0 sm:px-10">
         {/* logo */}
-        <div>
+        <div className="">
           <NavLink to="/">
             <img src={assets.logo} alt="" className="md:w-36 w-32" />
           </NavLink>
         </div>
 
         {/* navbar for desktop */}
-        <ul className="hidden md:flex gap-10 h-fit mt-2 ">
+        <ul className="hidden md:flex gap-10 h-fit  ">
           <li className="hover:font-bold transition-all duration-300">
             <NavLink to="/">
               <p className="">HOME</p>
@@ -80,7 +80,7 @@ const LogOutFunction = () =>{
         </button>
 
         {/* right side of header */}
-        <div className="flex gap-2 sm:gap-5 mt-2 h-fit">
+        <div className="flex gap-2 sm:gap-5 mt-2 sm:mt-0 h-fit">
           <button
             onClick={HandleSearchBar}
             className="text-xl h-fit hover:scale-125  duration-300 transition-all cursor-pointer"
