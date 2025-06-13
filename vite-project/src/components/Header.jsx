@@ -147,6 +147,9 @@ const LogOutFunction = () =>{
         <li className=" transition-all duration-300 py-2 ">
          <NavLink to="/order"><p>Order</p></NavLink>
         </li>
+        <li className=" transition-all duration-300 py-2 ">
+         <NavLink to="/login"><p>Login</p></NavLink>
+        </li>
       </ul>
 
       <div
