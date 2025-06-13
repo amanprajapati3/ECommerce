@@ -122,7 +122,7 @@ const LogOutFunction = () =>{
       </div>
 
       <ul
-         className={`fixed top-[45px] md:hidden right-0 h-screen bg-transparent backdrop-blur-2xl text-gray-900 z-40 w-[70%] transform transition-transform duration-500 pt-2 text-center ease-in-out
+         className={`fixed top-[45px] md:hidden right-0 h-screen bg-gray-200 text-gray-900 z-40 w-[70%] transform transition-transform duration-500 pt-2 text-center ease-in-out
           ${
             IsMenuOpen
               ? "translate-x-full " : "translate-x-0 shadow-2xl shadow-black"

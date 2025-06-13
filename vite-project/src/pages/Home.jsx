@@ -5,9 +5,10 @@ import Policy from "../components/Policy.jsx";
 import { ShopContext } from "../context/ShopContext.jsx";
 import ProductItems from "../components/ProductItems.jsx";
 import { NavLink } from "react-router-dom";
+import Loader from "../components/Loader.jsx";
 
 const Home = () => {
-  const { products } = useContext(ShopContext);
+  const { products, loader } = useContext(ShopContext);
 
   const men = products.filter((men) => men.category === "Men");
   const women = products.filter((women) => women.category === "Women");
@@ -39,7 +40,7 @@ const Home = () => {
 
       {/* collection section */}
       <div className="flex justify-center text-center mt-10">
-        <LatestCollection />
+        {loader ? <Loader /> : <LatestCollection />}
       </div>
 
       {/* Mens section */}
@@ -53,17 +54,21 @@ const Home = () => {
         </p>
 
         <div className="flex justify-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
-          {men.slice(0, 6).map((item, index) => (
-            <div className=" ">
-              <ProductItems
-                key={index}
-                id={item._id}
-                name={item.name}
-                image={item.image}
-                price={item.price}
-              />
-            </div>
-          ))}
+          {loader ? (
+            <Loader />
+          ) : (
+            men.slice(0, 6).map((item, index) => (
+              <div className=" ">
+                <ProductItems
+                  key={index}
+                  id={item._id}
+                  name={item.name}
+                  image={item.image}
+                  price={item.price}
+                />
+              </div>
+            ))
+          )}
         </div>
         <center>
           <button className="px-5 py-2 rounded-md bg-blue-700 text-white hover:bg-blue-600 cursor-pointer ">
@@ -76,7 +81,9 @@ const Home = () => {
 
       <div className="text-center mt-5 sm:mx-10">
         <div className="flex justify-center my-3">
-          <h1 className="text-center text-3xl font-mono font-semibold">Womans</h1>
+          <h1 className="text-center text-3xl font-mono font-semibold">
+            Womans
+          </h1>
         </div>
         <p className="text-center pb-5 sm:px-5 px-2">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit,
@@ -84,17 +91,21 @@ const Home = () => {
         </p>
 
         <div className="flex justify-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
-          {women.slice(0, 6).map((item, index) => (
-            <div className=" ">
-              <ProductItems
-                key={index}
-                id={item._id}
-                name={item.name}
-                image={item.image}
-                price={item.price}
-              />
-            </div>
-          ))}
+          {loader ? (
+            <Loader />
+          ) : (
+            women.slice(0, 6).map((item, index) => (
+              <div className=" ">
+                <ProductItems
+                  key={index}
+                  id={item._id}
+                  name={item.name}
+                  image={item.image}
+                  price={item.price}
+                />
+              </div>
+            ))
+          )}
         </div>
         <center>
           <button className="px-5 py-2 rounded-md bg-pink-700 text-white hover:bg-pink-600 cursor-pointer ">
@@ -115,17 +126,22 @@ const Home = () => {
         </p>
 
         <div className="flex justify-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
-          {kid.slice(0, 6).map((item, index) => (
-            <div className=" ">
-              <ProductItems
-                key={index}
-                id={item._id}
-                name={item.name}
-                image={item.image}
-                price={item.price}
-              />
-            </div>
-          ))}
+          {loader ? (
+            <Loader />
+          ) : (
+            kid.slice(0, 6).map((item, index) => (
+              <div className=" ">
+                <ProductItems
+                  key={index}
+                  id={item._id}
+                  name={item.name}
+                  image={item.image}
+                  price={item.price}
+                />
+              </div>
+            ))
+          )}
+          {}
         </div>
         <center>
           <button className="px-5 py-2 rounded-md bg-red-700 text-white hover:bg-red-600 cursor-pointer ">
