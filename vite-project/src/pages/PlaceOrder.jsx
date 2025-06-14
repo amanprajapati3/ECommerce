@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { backend_url, token, products, cartItem, setCartItem, totalAmount } =
     useContext(ShopContext);
@@ -31,6 +32,7 @@ const PlaceOrder = () => {
   };
 
   const onSubmitHandler = async (event) => {
+    setLoading(true);
     event.preventDefault();
     console.log(formData);
 
@@ -59,7 +61,6 @@ const PlaceOrder = () => {
       };
 
       switch (method) {
-
         //  api call for cod
         case "COD":
           try {
@@ -109,7 +110,7 @@ const PlaceOrder = () => {
               { headers: { token } }
             );
             if (responseStripe.data.success) {
-              const {session_url} = responseStripe.data;
+              const { session_url } = responseStripe.data;
               window.location.replace(session_url);
             } else {
               toast.error(responseStripe.data.message);
@@ -168,7 +169,7 @@ const PlaceOrder = () => {
                   name="email"
                   value={formData.email}
                   required
-                 className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
+                  className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
                 />
                 <div className="flex  gap-3">
                   <input
@@ -178,7 +179,7 @@ const PlaceOrder = () => {
                     name="street"
                     value={formData.street}
                     required
-                   className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
+                    className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
                   />
                   <input
                     type="text"
@@ -197,7 +198,7 @@ const PlaceOrder = () => {
                   name="state"
                   value={formData.state}
                   required
-                 className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
+                  className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
                 />
                 <div className="flex  gap-3">
                   <input
@@ -207,7 +208,7 @@ const PlaceOrder = () => {
                     name="country"
                     value={formData.country}
                     required
-                   className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
+                    className="py-2 pl-1 my-3 w-full  border-2 border-b-blue-500 bg-white rounded-xl border-transparent focus:bg-blue-100 outline-none "
                   />
                   <input
                     type="number"
@@ -267,9 +268,14 @@ const PlaceOrder = () => {
                   <center>
                     <button
                       type="submit"
+                      disabled={loading}
                       className="bg-black mt-5 text-white hover:bg-gray-800 active:bg-black active:scale-95 px-10 py-2 cursor-pointer"
                     >
-                      Place Order
+                      {loading ? (
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      ) : (
+                        "Place Order"
+                      )}
                     </button>
                   </center>
                 </div>

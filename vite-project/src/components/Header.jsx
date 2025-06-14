@@ -99,7 +99,7 @@ const LogOutFunction = () =>{
                     <NavLink to="/profile">My profile</NavLink>
                   </p>
                   <p className="cursor-pointer text-[18px] hover:text-black">
-                    <NavLink to="/order">Order</NavLink>
+                    <NavLink to="/order">My Orders</NavLink>
                   </p>
                   <p onClick={LogOutFunction} className="cursor-pointer text-[18px] hover:text-black">
                     Logout
@@ -145,7 +145,7 @@ const LogOutFunction = () =>{
           <NavLink to="/profile"><p>My profile</p></NavLink>
         </li>
         <li className=" transition-all duration-300 py-2 ">
-         <NavLink to="/order"><p>Order</p></NavLink>
+         <NavLink to="/order"><p>My Orders</p></NavLink>
         </li>
         <li className=" transition-all duration-300 py-2 ">
          <NavLink to="/login"><p>Login</p></NavLink>

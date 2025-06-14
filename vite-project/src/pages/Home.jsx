@@ -156,7 +156,7 @@ const Home = () => {
       </div>
 
       {/* subscribe section */}
-      <div className="flex justify-center mb-16">
+      <div className="flex justify-center sm:mx-0 mb-16">
         <div className="text-center">
           <h1 className="text-xl font-bold py-3">
             Subscribe now & get 20% off
@@ -165,13 +165,13 @@ const Home = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
             perferendis quaerat aut.
           </p>
-          <div className="flex justify-center gap-2 ">
+          <div className="flex justify-center sm:gap-2 mx-5 sm:mx-0 ">
             <input
               type="email"
               placeholder="Enter Your Email"
-              className="text-gray-900 md:w-[360px] px-3 py-3 rounded-md outline-none border-2 border-gray-400 focus:bg-gray-300 focus:border-gray-400"
+              className="text-gray-900 md:w-[360px] px-2 py-2 rounded-l-xl outline-none border-2 border-gray-400 focus:bg-gray-300 focus:border-gray-400"
             />
-            <button className="py-2 px-5 rounded-md cursor-pointer bg-black text-white hover:text-black hover:bg-white hover:border-2 transition-all duration-500">
+            <button className="py-2 px-5 rounded-r-xl cursor-pointer bg-black text-white active:scale-95">
               Subscribe
             </button>
           </div>

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
@@ -7,37 +7,45 @@ import toast from "react-hot-toast";
 
 const Registration = () => {
   const [seePassword, setSeePassword] = useState(true);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const { token, setToken, backend_url } = useContext(ShopContext);
   const HandlePassword = () => {
     setSeePassword(!password);
   };
 
-  const handleRegistrationButton = async(event) => {
+  const handleRegistrationButton = async (event) => {
+    setLoading(true);
     event.preventDefault();
     try {
-      const response = await axios.post(backend_url + '/api/user/register', {name, email, password});
-      if(response.data.success){
+      const response = await axios.post(backend_url + "/api/user/register", {
+        name,
+        email,
+        password,
+      });
+      if (response.data.success) {
         setToken(response.data.token);
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem("token", response.data.token);
         toast.success("User Registered successfully");
-      }else{
+      } else {
         toast.error("user already exist");
       }
     } catch (error) {
       console.log(error);
-      toast.error("Please try again")
+      toast.error("Please try again");
+    } finally {
+      setLoading(false);
     }
   };
 
-  useEffect(()=>{
-    if(token){
+  useEffect(() => {
+    if (token) {
       navigate("/");
     }
-  }, [token])
+  }, [token]);
 
   return (
     <>
@@ -54,7 +62,7 @@ const Registration = () => {
               required
               autoComplete="on"
               value={name}
-              onChange={(e)=>setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Name"
               name="name"
               className="py-2 pl-5 focus:text-black focus:font-bold my-2 rounded-md outline-none border-2 focus:bg-sky-100 focus:border-sky-400 sm:w-[300px]"
@@ -65,7 +73,7 @@ const Registration = () => {
               required
               autoComplete="on"
               placeholder="Email"
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               value={email}
               name="email"
               className="py-2 pl-5 focus:text-black focus:font-bold my-2 rounded-md outline-none border-2 focus:bg-sky-100 focus:border-sky-400 sm:w-[300px]"
@@ -78,7 +86,7 @@ const Registration = () => {
                 className="py-2 pl-2 focus:text-black focus:font-bold mt-2 rounded-md outline-none border-2 focus:bg-sky-100 focus:border-sky-400 sm:w-[300px]"
                 type={seePassword ? "password" : "text"}
                 name="password"
-                onChange={(e)=>setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 placeholder="Enter your password"
               />
@@ -98,8 +106,15 @@ const Registration = () => {
               </h1>
             </div>
             <center>
-              <button className="my-5 bg-black text-white hover:bg-gray-800  active:bg-black transition-all duration-100 active:scale-95 px-5 py-2 rounded-md cursor-pointer ">
-                Register
+              <button
+                disabled={loading}
+                className="my-5 bg-black text-white hover:bg-gray-800  active:bg-black transition-all duration-100 active:scale-95 px-5 py-2 rounded-md cursor-pointer "
+              >
+                {loading ? (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                ) : (
+                  "Register"
+                )}
               </button>
             </center>
           </form>
