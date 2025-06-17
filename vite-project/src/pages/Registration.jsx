@@ -14,7 +14,7 @@ const Registration = () => {
   const [loading, setLoading] = useState(false);
   const { token, setToken, backend_url } = useContext(ShopContext);
   const HandlePassword = () => {
-    setSeePassword(!password);
+    setSeePassword(!seePassword);
   };
 
   const handleRegistrationButton = async (event) => {
