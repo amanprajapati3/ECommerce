@@ -49,18 +49,18 @@ const Login = ({setToken}) => {
               value={email}
               className="p-2 text-gray-900 rounded-md my-2 border-2 w-full border-gray-400 outline-none focus:bg-gray-300"
             />
-            <h1 className="font-bold    ">Password : </h1>
-            <div className="flex w-full">
+            <h1 className="font-bold  ">Password : </h1>
+            <div className="flex justify-between border-gray-400 border-2 mt-2 rounded-md sm:w-full focus:bg-gray-300  ">
               <input
                 type={SeePassword ? "password" : "text"}
                 placeholder="Enter Email address"
                 required
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
-                className="p-2 text-gray-900 rounded-md my-2  border-2 w-full border-gray-400 outline-none focus:bg-gray-300"
+                className="p-2 text-gray-900 rounded-md   sm:w-full w-full outline-none "
               />
               <label
-                className="relative text-xl right-8 top-5"
+                className="relative  text-xl right-8 top-2.5"
                 onClick={HandlePassword}
               >
                 {SeePassword ? <FaEyeSlash /> : <FaEye />}{" "}
