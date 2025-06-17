@@ -65,7 +65,7 @@ const Registration = () => {
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
               name="name"
-              className="py-2 pl-5 focus:text-black focus:font-bold my-2 rounded-md outline-none border-2 focus:bg-sky-100 focus:border-sky-400 sm:w-[300px]"
+              className="py-2 pl-5 w-full focus:text-black  my-2 rounded-md outline-none border-b-2 focus:bg-gray-300 transition-all duration-500 sm:w-[300px]"
             />{" "}
             <br />
             <input
@@ -76,14 +76,14 @@ const Registration = () => {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               name="email"
-              className="py-2 pl-5 focus:text-black focus:font-bold my-2 rounded-md outline-none border-2 focus:bg-sky-100 focus:border-sky-400 sm:w-[300px]"
+              className="py-2 pl-5 focus:text-black  my-2 rounded-md outline-none w-full border-b-2 focus:bg-gray-300 transition-all duration-500 sm:w-[300px]"
             />{" "}
             <br />
-            <span className="flex ml-5">
+            <span  className="flex justify-between w-[300px] border-b-2 rounded-md ">
               <input
                 required
                 autoComplete="on"
-                className="py-2 pl-2 focus:text-black focus:font-bold mt-2 rounded-md outline-none border-2 focus:bg-sky-100 focus:border-sky-400 sm:w-[300px]"
+                className="py-2 pl-2 focus:text-black  mt-2 w-full rounded-md outline-none "
                 type={seePassword ? "password" : "text"}
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}

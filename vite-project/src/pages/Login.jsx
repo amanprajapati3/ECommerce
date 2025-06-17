@@ -64,14 +64,14 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               name="email"
-              className="py-2 pl-5 font-bold focus:text-black focus:font-bold my-2 rounded-md outline-none border-2 focus:bg-sky-100 focus:border-sky-400 sm:w-[300px]"
+              className="py-2 pl-5 w-[270px] focus:text-black  my-2 rounded-md outline-none border-b-2 focus:bg-gray-300 sm:w-[300px]"
             />{" "}
             <br />
-            <div className="flex justify-center w-full">
+            <div className="flex justify-center w-[300px] ml-2.5 sm:w-full ">
               <input
                 required
                 autoComplete="on"
-                className="py-2 pl-2 focus:text-black focus:font-bold mt-2 rounded-md outline-none border-2 focus:bg-sky-100 focus:border-sky-400 sm:w-[300px]"
+                className="py-2 pl-2 w-full ml-3 sm:ml-0 focus:text-black  mt-2 rounded-md outline-none border-b-2 focus:bg-gray-300 sm:w-[300px]"
                 type={SeePassword ? "password" : "text"}
                 name="password"
                 value={password}
@@ -101,7 +101,7 @@ const Login = () => {
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 ) : (
-                  "Register"
+                  "Login"
                 )}
               </button>
             </center>

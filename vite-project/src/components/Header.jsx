@@ -95,13 +95,13 @@ const LogOutFunction = () =>{
 
               <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
                 <div className={token ? (`flex flex-col gap-2 w-36 py-2 px-5 bg-slate-50 text-gray-800`): 'hidden'}>
-                  <p className="cursor-pointer text-[18px] hover:text-black">
+                  <p className="cursor-pointer text-sm hover:text-black">
                     <NavLink to="/profile">My profile</NavLink>
                   </p>
-                  <p className="cursor-pointer text-[18px] hover:text-black">
+                  <p className="cursor-pointer text-sm hover:text-black">
                     <NavLink to="/order">My Orders</NavLink>
                   </p>
-                  <p onClick={LogOutFunction} className="cursor-pointer text-[18px] hover:text-black">
+                  <p onClick={LogOutFunction} className="cursor-pointer text-sm hover:text-black">
                     Logout
                   </p>
                 </div>
