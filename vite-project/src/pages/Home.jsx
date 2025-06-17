@@ -22,7 +22,7 @@ const Home = () => {
           <img
             src={assets.hero_img}
             alt="Background"
-            className="w-full h-full object-cover filter brightness-75"
+            className="w-full h-full object-cover filter brightness-50"
           />
         </div>
         <div className="relative  text-center  items-center pb-28 pt-16 md:pb-32 md:pt-44">
@@ -32,7 +32,7 @@ const Home = () => {
           <h1 className="font-sans from-green-600 via-red-600 to-violet-600 bg-gradient-to-r bg-clip-text text-transparent font-semibold text-3xl sm:text-5xl">
             Wear Fashion Wear Style
           </h1>
-          <p className="py-3 font-semibold text-xl from-gray-800 via-blue-400 to-green-600 bg-gradient-to-r bg-clip-text text-transparent ">
+          <p className="py-3 font-semibold text-xl from-green-800 via-orange-800 to-red-900 bg-gradient-to-r bg-clip-text text-transparent ">
             Clothes Doesn't defines Your Beauty, It defines Your Personality
           </p>
         </div>

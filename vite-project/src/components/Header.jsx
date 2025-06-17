@@ -7,13 +7,18 @@ import { FaCartArrowDown } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { RiMenu2Fill } from "react-icons/ri";
 import { ShopContext } from "../context/ShopContext.jsx";
+import { CgProfile } from "react-icons/cg";
+import { BsCart4, BsCollection } from "react-icons/bs";
+import { AiOutlineHome } from "react-icons/ai";
+
 
 const Header = () => {
   const [search_bar, setSearch_bar] = useState(true);
   const [IsMenuOpen, SetIsMenuOpen] = useState(true);
   const navigate = useNavigate();
 
-  const { search, setSearch, getCartCount, token, setToken, setCartItem } = useContext(ShopContext);
+  const { search, setSearch, getCartCount, token, setToken, setCartItem } =
+    useContext(ShopContext);
 
   const HandleSearchBar = () => {
     setSearch_bar(!search_bar);
@@ -23,12 +28,12 @@ const Header = () => {
     SetIsMenuOpen(!IsMenuOpen);
   };
 
-const LogOutFunction = () =>{
-  localStorage.removeItem('token');
-  setToken('');
-  setCartItem({});
-  navigate("/login");
-}
+  const LogOutFunction = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    setCartItem({});
+    navigate("/login");
+  };
 
   return (
     <>
@@ -80,7 +85,7 @@ const LogOutFunction = () =>{
         </button>
 
         {/* right side of header */}
-        <div className="flex gap-2 sm:gap-5 mt-2 sm:mt-0 h-fit">
+        <div className="flex gap-2 sm:gap-5 mt-1 sm:mt-0 h-fit">
           <button
             onClick={HandleSearchBar}
             className="text-xl h-fit hover:scale-125  duration-300 transition-all cursor-pointer"
@@ -94,14 +99,23 @@ const LogOutFunction = () =>{
               </NavLink>
 
               <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-                <div className={token ? (`flex flex-col gap-2 w-36 py-2 px-5 bg-slate-50 text-gray-800`): 'hidden'}>
+                <div
+                  className={
+                    token
+                      ? `flex flex-col gap-2 w-36 py-2 px-5 bg-slate-50 text-gray-800`
+                      : "hidden"
+                  }
+                >
                   <p className="cursor-pointer text-sm hover:text-black">
                     <NavLink to="/profile">My profile</NavLink>
                   </p>
                   <p className="cursor-pointer text-sm hover:text-black">
                     <NavLink to="/order">My Orders</NavLink>
                   </p>
-                  <p onClick={LogOutFunction} className="cursor-pointer text-sm hover:text-black">
+                  <p
+                    onClick={LogOutFunction}
+                    className="cursor-pointer text-sm hover:text-black"
+                  >
                     Logout
                   </p>
                 </div>
@@ -122,41 +136,42 @@ const LogOutFunction = () =>{
       </div>
 
       <ul
-         className={`fixed top-[45px] md:hidden right-0 h-screen bg-gray-200 text-gray-900 z-40 w-[70%] transform transition-transform duration-500 pt-2 text-center ease-in-out
+        className={`fixed top-[43px] md:hidden right-0 h-screen bg-gray-200 text-gray-900 z-40 w-[70%] transform transition-transform duration-500 pt-2 text-center ease-in-out
           ${
             IsMenuOpen
-              ? "translate-x-full " : "translate-x-0 shadow-2xl shadow-black"
-              
+              ? "translate-x-full "
+              : "translate-x-0 shadow-2xl shadow-black"
           }`}
       >
         <li className=" transition-all duration-300 py-2 ">
-          <NavLink to="/"><p>Home</p></NavLink>
+          <NavLink to="/">
+            <p>Home</p>
+          </NavLink>
+        </li>
+
+        <li className=" transition-all duration-300 py-2 ">
+          <NavLink to="/about">
+            <p>About</p>
+          </NavLink>
         </li>
         <li className=" transition-all duration-300 py-2 ">
-          <NavLink to="/collection"><p>Collection</p></NavLink>
-        </li>  
-        <li className=" transition-all duration-300 py-2 ">
-          <NavLink to="/about"><p>About</p></NavLink>
+          <NavLink to="/contact">
+            <p>Contact</p>
+          </NavLink>
         </li>
         <li className=" transition-all duration-300 py-2 ">
-          <NavLink to="/contact"><p>Contact</p></NavLink>
-        </li>
-         <li className=" transition-all duration-300 py-2 ">
-          <NavLink to="/profile"><p>My profile</p></NavLink>
-        </li>
-        <li className=" transition-all duration-300 py-2 ">
-         <NavLink to="/order"><p>My Orders</p></NavLink>
-        </li>
-        <li className=" transition-all duration-300 py-2 ">
-         <NavLink to="/login"><p>Login</p></NavLink>
-        </li>
+            <NavLink to="/login">
+              <p className="">Login</p>
+            </NavLink>
+          </li>
       </ul>
 
       <div
         className={
           search_bar
             ? `w-0 h-0 scale-x-0`
-            : `flex scale-x-100 justify-center duration-600 w-full transition-all`
+            : `flex scale-x-100 sticky
+            top-10 justify-center duration-600 w-full transition-all`
         }
       >
         <input
@@ -164,8 +179,36 @@ const LogOutFunction = () =>{
           placeholder="Search Product"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="p-2 border-b-2 bg-gray-400 border-gray-400 focus:border-gray-500 focus:bg-gray-300 outline-none   "
+          className="px-2 py-3 border-b-2 bg-gray-400 rounded-md w-full sm:w-[500px] border-gray-400 focus:border-gray-500 focus:bg-gray-300 outline-none   "
         />
+      </div>
+
+      {/* sticky navbar for mobile */}
+
+      <div className="fixed sm:hidden bg-transparent backdrop-blur-2xl bottom-0 w-full">
+        <ul className="flex justify-between mx-9">
+          <li className=" transition-all duration-300 py-3">
+          <NavLink to="/">
+            <p className="text-xl"><AiOutlineHome />
+            </p>
+          </NavLink>
+        </li>
+          <li className=" transition-all duration-300 py-3 ">
+            <NavLink to="/collection">
+              <p className="text-xl text-center items-center">
+                <BsCollection />
+                
+              </p>
+            </NavLink>
+          </li>
+          <li className=" transition-all duration-300 py-3 ">
+            <NavLink to="/order">
+              <p className="text-xl"><BsCart4/>
+              </p>
+            </NavLink>
+          </li>
+          
+        </ul>
       </div>
     </>
   );
