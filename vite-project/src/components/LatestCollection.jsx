@@ -7,7 +7,7 @@ const LatestCollection = () => {
   const [latestProduct, setLatestProduct] = useState([]);
 
   useEffect(() => {
-    setLatestProduct(products.slice(0, 12));
+    setLatestProduct(products.slice(0, 8));
   }, [products]); 
 
   return (
@@ -21,7 +21,7 @@ const LatestCollection = () => {
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit,
         iure. Lorem ipsum dolor sit amet.
       </p>
-      <div className="flex justify-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
+      <div className="sm:flex justify-center grid grid-cols-2 text-center mb-10 flex-wrap sm:gap-1  ">
         {latestProduct.map((item, index) => (
           <ProductItems
             key={index}
@@ -29,6 +29,7 @@ const LatestCollection = () => {
             name={item.name}
             image={item.image}
             price={item.price}
+            originalPrice={item.OriginalPrice}
           />
         ))}
       </div>

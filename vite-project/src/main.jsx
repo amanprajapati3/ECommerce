@@ -19,6 +19,7 @@ import Verify from "./pages/Verify.jsx";
 import Kids from "./pages/Kids.jsx";
 import Mens from "./pages/Mens.jsx";
 import Women from "./pages/Women.jsx";
+import Wishlist from "./pages/Wishlist.jsx";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
       {
         path: "/women",
         element: <Women/>
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist/>
       }
     ],
   },

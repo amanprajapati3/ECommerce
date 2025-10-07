@@ -11,13 +11,13 @@ const RelatedProduct = ({ category, subCategory }) => {
       let productCpy = products.slice();
       productCpy = productCpy.filter((item) => category == item.category);
       productCpy = productCpy.filter((item) => subCategory == item.subCategory);
-      setRelated(productCpy.slice(0, 4));
+      setRelated(productCpy.slice(0, 8));
     }
   }, [products]);
 
   return (
     <>
-    <div className="flex mt-5 justify-center text-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
+    <div className="sm:flex justify-center grid mt-10 grid-cols-2 text-center mb-10 flex-wrap sm:gap-1 ">
           {related.map((item, index) => (
             <div className=" ">
               <ProductItems

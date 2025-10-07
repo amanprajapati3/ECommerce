@@ -31,7 +31,7 @@ const Policy = () => {
           <label htmlFor="" className="font-bold py-1">Best costumer support</label>
           <p className="py-1">we provide 24/7 customer support</p>
         </div>
-      </div>\
+      </div>
     </>
   );
 };

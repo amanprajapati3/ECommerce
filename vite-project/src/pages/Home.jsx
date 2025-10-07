@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { assets } from "../assets/frontend_assets/assets.js";
 import LatestCollection from "../components/LatestCollection.jsx";
 import Policy from "../components/Policy.jsx";
 import { ShopContext } from "../context/ShopContext.jsx";
 import ProductItems from "../components/ProductItems.jsx";
 import { NavLink } from "react-router-dom";
 import Loader from "../components/Loader.jsx";
+import HeroSection from "./HeroSection.jsx";
 
 const Home = () => {
   const { products, loader } = useContext(ShopContext);
@@ -17,34 +17,30 @@ const Home = () => {
   return (
     <>
       {/* hero page */}
-      <div className="relative">
-        <div className="absolute inset-0 z-0">
+      <HeroSection />
+
+      {/* whatsapp integration */}
+      <div className="fixed sm:bottom-5 bottom:10 right-5 z-20">
+        <a
+          href="https://wa.me/917217814501?text=Hi%20there%2C%20I%20have%20a%20question"
+          target="_blank"
+          class="whatsapp-sticky"
+        >
           <img
-            src={assets.hero_img}
-            alt="Background"
-            className="w-full h-full object-cover filter brightness-50"
+            src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png"
+            alt="WhatsApp"
+            className="sm:w-20 w-12 "
           />
-        </div>
-        <div className="relative  text-center  items-center pb-28 pt-16 md:pb-32 md:pt-44">
-          <div className="flex from-green-600 via-yellow-600 to-white bg-gradient-to-r bg-clip-text text-transparent text-3xl sm:text-5xl justify-center mb-2 ml-2">
-            <h1 className="text-left mb-5 font-semibold">Our BestSeller</h1>
-          </div>
-          <h1 className="font-sans from-green-600 via-red-600 to-violet-600 bg-gradient-to-r bg-clip-text text-transparent font-semibold text-3xl sm:text-5xl">
-            Wear Fashion Wear Style
-          </h1>
-          <p className="py-3 font-semibold text-xl from-green-800 via-orange-800 to-red-900 bg-gradient-to-r bg-clip-text text-transparent ">
-            Clothes Doesn't defines Your Beauty, It defines Your Personality
-          </p>
-        </div>
+        </a>
       </div>
 
       {/* collection section */}
-      <div className="flex justify-center text-center mt-10">
+      <div className="flex justify-center  mt-10">
         {loader ? <Loader /> : <LatestCollection />}
       </div>
 
       {/* Mens section */}
-      <div className="text-center mt-5 sm:mx-10">
+      <div className=" mt-5 sm:mx-10">
         <div className="flex justify-center my-3">
           <h1 className="text-center text-3xl font-mono font-semibold">Mens</h1>
         </div>
@@ -53,11 +49,11 @@ const Home = () => {
           iure. Lorem ipsum dolor sit amet.
         </p>
 
-        <div className="flex justify-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
+        <div className="sm:flex justify-center grid grid-cols-2 text-center mb-10 flex-wrap sm:gap-1  ">
           {loader ? (
             <Loader />
           ) : (
-            men.slice(0, 6).map((item, index) => (
+            men.slice(0, 4).map((item, index) => (
               <div className=" ">
                 <ProductItems
                   key={index}
@@ -65,13 +61,14 @@ const Home = () => {
                   name={item.name}
                   image={item.image}
                   price={item.price}
+                   originalPrice={item.OriginalPrice}
                 />
               </div>
             ))
           )}
         </div>
         <center>
-          <button className="px-5 py-2 rounded-md bg-blue-700 text-white hover:bg-blue-600 cursor-pointer ">
+          <button className="px-5 py-2 rounded-md bg-black text-white hover:bg-gray-800 cursor-pointer ">
             <NavLink to={"/mens"}>Shop More</NavLink>
           </button>
         </center>
@@ -79,7 +76,7 @@ const Home = () => {
 
       {/* women section */}
 
-      <div className="text-center mt-5 sm:mx-10">
+      <div className=" mt-5 sm:mx-10">
         <div className="flex justify-center my-3">
           <h1 className="text-center text-3xl font-mono font-semibold">
             Womans
@@ -90,11 +87,11 @@ const Home = () => {
           iure. Lorem ipsum dolor sit amet.
         </p>
 
-        <div className="flex justify-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
+        <div className="sm:flex justify-center grid grid-cols-2 text-center mb-10 flex-wrap sm:gap-1  ">
           {loader ? (
             <Loader />
           ) : (
-            women.slice(0, 6).map((item, index) => (
+            women.slice(0, 4).map((item, index) => (
               <div className=" ">
                 <ProductItems
                   key={index}
@@ -102,13 +99,14 @@ const Home = () => {
                   name={item.name}
                   image={item.image}
                   price={item.price}
+                   originalPrice={item.OriginalPrice}
                 />
               </div>
             ))
           )}
         </div>
         <center>
-          <button className="px-5 py-2 rounded-md bg-pink-700 text-white hover:bg-pink-600 cursor-pointer ">
+          <button className="px-5 py-2 rounded-md bg-black text-white hover:bg-gray-800  cursor-pointer ">
             <NavLink to={"/women"}>Shop More</NavLink>
           </button>
         </center>
@@ -116,7 +114,7 @@ const Home = () => {
 
       {/* kids section */}
 
-      <div className="text-center mt-5 sm:mx-10">
+      <div className=" mt-5 sm:mx-10">
         <div className="flex justify-center my-3">
           <h1 className="text-center text-3xl font-mono font-semibold">Kids</h1>
         </div>
@@ -125,11 +123,11 @@ const Home = () => {
           iure. Lorem ipsum dolor sit amet.
         </p>
 
-        <div className="flex justify-center sm:mx-2 mb-10 flex-wrap sm:gap-6 gap-4">
+        <div className="sm:flex justify-center grid grid-cols-2 text-center mb-10 flex-wrap sm:gap-1">
           {loader ? (
             <Loader />
           ) : (
-            kid.slice(0, 6).map((item, index) => (
+            kid.slice(0, 4).map((item, index) => (
               <div className=" ">
                 <ProductItems
                   key={index}
@@ -137,6 +135,7 @@ const Home = () => {
                   name={item.name}
                   image={item.image}
                   price={item.price}
+                   originalPrice={item.OriginalPrice}
                 />
               </div>
             ))
@@ -144,7 +143,7 @@ const Home = () => {
           {}
         </div>
         <center>
-          <button className="px-5 py-2 rounded-md bg-red-700 text-white hover:bg-red-600 cursor-pointer ">
+          <button className="px-5 py-2 rounded-md bg-black text-white hover:bg-gray-800  cursor-pointer ">
             <NavLink to={"/kids"}>Shop More</NavLink>
           </button>
         </center>
@@ -163,7 +162,7 @@ const Home = () => {
           </h1>
           <p className="pb-5">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-            perferendis quaerat aut.
+            perferendis aut.
           </p>
           <div className="flex justify-center sm:gap-2 mx-5 sm:mx-0 ">
             <input

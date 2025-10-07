@@ -10,7 +10,7 @@ import { ShopContext } from "../context/ShopContext.jsx";
 import { CgProfile } from "react-icons/cg";
 import { BsCart4, BsCollection } from "react-icons/bs";
 import { AiOutlineHome } from "react-icons/ai";
-
+import { FaRegHeart } from "react-icons/fa";
 
 const Header = () => {
   const [search_bar, setSearch_bar] = useState(true);
@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex sticky z-10 top-0 backdrop-blur-2xl justify-between px-5 lg:px-16 pt-2 sm:pt-5 text-[12px] sm:mt-0 sm:px-10">
+      <div className="flex sticky z-20 top-0 backdrop-blur-2xl justify-between px-5 lg:px-16 pt-2 sm:pt-5 text-[12px] sm:mt-0 sm:px-10">
         {/* logo */}
         <div className="">
           <NavLink to="/">
@@ -46,7 +46,7 @@ const Header = () => {
         </div>
 
         {/* navbar for desktop */}
-        <ul className="hidden md:flex gap-10 h-fit  ">
+        <ul className="hidden lg:flex gap-10 h-fit  ">
           <li className="hover:font-bold transition-all duration-300">
             <NavLink to="/">
               <p className="">HOME</p>
@@ -58,6 +58,27 @@ const Header = () => {
               {" "}
               <p>COLLECTION</p>
               <hr className="w-3/4 h-[2px] ml-1 text-pink-700 hidden" />
+            </NavLink>
+          </li>
+          <li className=" hover:font-bold transition-all duration-300">
+            <NavLink to="/mens">
+              {" "}
+              <p>MEN</p>
+              <hr className="w-3/4 h-[1.6px] ml-1 text-pink-700 hidden" />
+            </NavLink>
+          </li>
+          <li className=" hover:font-bold transition-all duration-300">
+            <NavLink to="/women">
+              {" "}
+              <p>WOMAN</p>
+              <hr className="w-3/4 h-[1.6px] ml-1 text-pink-700 hidden" />
+            </NavLink>
+          </li>
+          <li className=" hover:font-bold transition-all duration-300">
+            <NavLink to="/kids">
+              {" "}
+              <p>KIDS</p>
+              <hr className="w-3/4 h-[1.6px] ml-1 text-pink-700 hidden" />
             </NavLink>
           </li>
           <li className=" hover:font-bold transition-all duration-300">
@@ -78,7 +99,7 @@ const Header = () => {
 
         {/* navbar for mobile */}
         <button
-          className="text-2xl -mt-2 md:hidden cursor-pointer"
+          className="text-2xl -mt-2 lg:hidden cursor-pointer"
           onClick={HandleMenuBar}
         >
           {IsMenuOpen ? <RiMenu2Fill /> : <RxCross1 />}
@@ -123,6 +144,13 @@ const Header = () => {
             </button>
           </div>
           <div>
+            <NavLink to="/wishlist">
+              <button className="text-[17px] sm:mt-1 mt-0.5 mr-1 cursor-pointer hover:scale-125 transition-all duration-200">
+                <FaRegHeart />
+              </button>
+            </NavLink>
+          </div>
+          <div>
             <NavLink to="/cart">
               <button className="text-2xl hover:scale-125 duration-300 transition-all cursor-pointer">
                 <FaCartArrowDown />
@@ -136,7 +164,7 @@ const Header = () => {
       </div>
 
       <ul
-        className={`fixed top-[43px] md:hidden right-0 h-screen bg-gray-200 text-gray-900 z-40 w-[70%] transform transition-transform duration-500 pt-2 text-center ease-in-out
+        className={`fixed top-[43px] lg:hidden right-0 h-screen bg-gray-200 text-gray-900 z-40 w-[70%] transform transition-transform duration-500 pt-2 text-center ease-in-out
           ${
             IsMenuOpen
               ? "translate-x-full "
@@ -146,6 +174,28 @@ const Header = () => {
         <li className=" transition-all duration-300 py-2 ">
           <NavLink to="/">
             <p>Home</p>
+          </NavLink>
+        </li>
+
+        <li className=" hover:font-bold transition-all py-2 duration-300">
+          <NavLink to="/mens">
+            {" "}
+            <p>Men</p>
+            <hr className="w-3/4 h-[1.6px] ml-1 text-pink-700 hidden" />
+          </NavLink>
+        </li>
+        <li className=" hover:font-bold transition-all py-2 duration-300">
+          <NavLink to="/women">
+            {" "}
+            <p>Woman</p>
+            <hr className="w-3/4 h-[1.6px] ml-1 text-pink-700 hidden" />
+          </NavLink>
+        </li>
+        <li className=" hover:font-bold transition-all py-2 duration-300">
+          <NavLink to="/kids">
+            {" "}
+            <p>Kids</p>
+            <hr className="w-3/4 h-[1.6px] ml-1 text-pink-700 hidden" />
           </NavLink>
         </li>
 
@@ -159,11 +209,20 @@ const Header = () => {
             <p>Contact</p>
           </NavLink>
         </li>
-        <li className=" transition-all duration-300 py-2 ">
+        <li className=" transition-all duration-300  ">
+          {token ? (
+            <p
+              onClick={LogOutFunction}
+              className="transition-all duration-300 py-2"
+            >
+              Logout
+            </p>
+          ) : (
             <NavLink to="/login">
               <p className="">Login</p>
             </NavLink>
-          </li>
+          )}
+        </li>
       </ul>
 
       <div
@@ -185,29 +244,29 @@ const Header = () => {
 
       {/* sticky navbar for mobile */}
 
-      <div className="fixed sm:hidden bg-transparent backdrop-blur-2xl bottom-0 w-full">
+      <div className="fixed sm:hidden bg-transparent backdrop-blur-2xl z-10 bottom-0 w-full">
         <ul className="flex justify-between mx-9">
           <li className=" transition-all duration-300 py-3">
-          <NavLink to="/">
-            <p className="text-xl"><AiOutlineHome />
-            </p>
-          </NavLink>
-        </li>
+            <NavLink to="/">
+              <p className="text-xl">
+                <AiOutlineHome />
+              </p>
+            </NavLink>
+          </li>
           <li className=" transition-all duration-300 py-3 ">
             <NavLink to="/collection">
               <p className="text-xl text-center items-center">
                 <BsCollection />
-                
               </p>
             </NavLink>
           </li>
           <li className=" transition-all duration-300 py-3 ">
             <NavLink to="/order">
-              <p className="text-xl"><BsCart4/>
+              <p className="text-xl">
+                <BsCart4 />
               </p>
             </NavLink>
           </li>
-          
         </ul>
       </div>
     </>

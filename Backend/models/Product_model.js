@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
     bestSeller : {type : Boolean, require: true},
     date : {type : Number, require: true},
     price : {type : Number, require: true},
+    OriginalPrice: {type : Number, require: true},
 })
 
 

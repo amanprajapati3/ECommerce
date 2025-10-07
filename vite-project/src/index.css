@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@media screen and (min-width:768px){
 a.active hr{
     display: block;
     scale:1;
@@ -11,6 +12,13 @@ a:hover hr{
       display: block;
       scale: 1;
 }
+}
+
+a.active p{
+    color: purple;
+}
+
+
 html{
     background-color: rgb(240, 236, 236);
 }

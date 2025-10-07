@@ -2,23 +2,33 @@ import React, { useState } from "react";
 import { assets } from "../assets/admin_assets/assets";
 import axios from "axios";
 import { backend_url } from "../App";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 
-const AddProduct = ({token}) => {
+const AddProduct = ({ token }) => {
   const [image1, setImage1] = useState(null);
   const [name, setProduct_name] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("Men");
   const [subCategory, setSubcategory] = useState("Topwear");
   const [price, setPrice] = useState("");
+  const [OriginalPrice, setOriginalPrice] = useState("");
   const [sizes, setSizes] = useState("");
   const [Bestseller, setBestseller] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const SubmitHandler = async (e) => {
-     setLoading(true);
+    setLoading(true);
     e.preventDefault();
-     console.log(name, description, category, subCategory, price, sizes, Bestseller );
+    console.log(
+      name,
+      description,
+      category,
+      subCategory,
+      price,
+      OriginalPrice,
+      sizes,
+      Bestseller
+    );
     try {
       const formData = new FormData();
       formData.append("name", name);
@@ -26,13 +36,15 @@ const AddProduct = ({token}) => {
       formData.append("category", category);
       formData.append("subCategory", subCategory);
       formData.append("price", price);
+      formData.append("OriginalPrice", OriginalPrice);
       formData.append("sizes", JSON.stringify(sizes));
       formData.append("Bestseller", Bestseller);
       image1 && formData.append("image1", image1);
- 
+
       const response = await axios.post(
         backend_url + "/api/product/add",
-        formData, {headers: {token}}
+        formData,
+        { headers: { token } }
       );
       console.log(response.data);
       toast.success("Product added successfully!");
@@ -44,12 +56,13 @@ const AddProduct = ({token}) => {
       setCategory("Men");
       setSubcategory("Topwear");
       setPrice("");
+      setOriginalPrice("");
       setSizes([]);
       setBestseller(false);
     } catch (error) {
       toast.error(error.message);
     } finally {
-       setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -96,7 +109,7 @@ const AddProduct = ({token}) => {
             className="border-2 border-gray-400 hover:bg-gray-200 focus:bg-gray-300 text-gray-800  md:w-full w-[135%] py-2 pl-5 outline-none my-3"
           ></textarea>
 
-          <div className="sm:flex gap-5 flex-wrap w-full">
+          <div className="flex gap-5 md:gap-24 flex-wrap w-full">
             <div>
               <h1 className="sm:text-[20px]">Product Category :</h1>
               <select
@@ -105,7 +118,7 @@ const AddProduct = ({token}) => {
                 value={category}
                 required
                 onChange={(e) => setCategory(e.target.value)}
-                className="border-gray border-2 sm:py-2 py-1 mb-2 w-[100px] border-gray-400 mt-3 sm:w-[100px]"
+                className="border-gray border-2 sm:py-2 py-1 mb-2 w-[100px] border-gray-400 mt-3 sm:w-full"
               >
                 <option value="Men">Men</option>
                 <option value="Women">Women</option>
@@ -120,13 +133,16 @@ const AddProduct = ({token}) => {
                 required
                 value={subCategory}
                 onChange={(e) => setSubcategory(e.target.value)}
-                className="border-gray border-2 sm:py-2 py-1 mb-2 w-[100px] border-gray-400 mt-3 sm:w-[100px]"
+                className="border-gray border-2 sm:py-2 py-1 mb-2 w-[100px] border-gray-400 mt-3 sm:w-full"
               >
                 <option value="Topwear">Topwear</option>
                 <option value="Bottomwear">Bottomwear</option>
                 <option value="Winterwear">Winterwear</option>
               </select>
             </div>
+          </div>
+
+          <div className="flex flex-wrap gap-12">
             <div>
               <h1 className="sm:text-[20px]">Product Price :</h1>
               <input
@@ -134,7 +150,17 @@ const AddProduct = ({token}) => {
                 required
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-                className="border-2 border-gray-400 hover:bg-gray-200 focus:bg-gray-300 text-gray-800  md:w-full w-[135%] sm:py-2 py-1 mt-1 pl-5 outline-none my-3"
+                className="border-2 border-gray-400 hover:bg-gray-200 focus:bg-gray-300 text-gray-800  md:w-full w-[100px] sm:py-2 py-1 mt-1 pl-5 outline-none my-3"
+              />
+            </div>
+            <div>
+              <h1 className="sm:text-[20px]">Original Price :</h1>
+              <input
+                type="number"
+                required
+                value={OriginalPrice}
+                onChange={(e) => setOriginalPrice(e.target.value)}
+                className="border-2 border-gray-400 hover:bg-gray-200 focus:bg-gray-300 text-gray-800  md:w-full w-[100px] sm:py-2 py-1 mt-1 pl-5 outline-none my-3"
               />
             </div>
           </div>
@@ -143,7 +169,13 @@ const AddProduct = ({token}) => {
             <input
               type="button"
               value={"S"}
-              onClick={() => setSizes(prev => prev.includes("S") ? prev.filter(item => item !== "S"): [...prev, "S"])}
+              onClick={() =>
+                setSizes((prev) =>
+                  prev.includes("S")
+                    ? prev.filter((item) => item !== "S")
+                    : [...prev, "S"]
+                )
+              }
               className={
                 sizes.includes("S")
                   ? "bg-blue-200 border-2 border-black cursor-pointer py-1 px-3  "
@@ -153,7 +185,13 @@ const AddProduct = ({token}) => {
             <input
               type="button"
               value={"M"}
-              onClick={() => setSizes(prev => prev.includes("M") ? prev.filter(item => item !== "M"): [...prev, "M"])}
+              onClick={() =>
+                setSizes((prev) =>
+                  prev.includes("M")
+                    ? prev.filter((item) => item !== "M")
+                    : [...prev, "M"]
+                )
+              }
               className={
                 sizes.includes("M")
                   ? "bg-blue-200 border-2 border-black cursor-pointer py-1 px-3 "
@@ -162,8 +200,14 @@ const AddProduct = ({token}) => {
             />
             <input
               type="button"
-              value={"L"} 
-              onClick={() => setSizes(prev => prev.includes("L") ? prev.filter(item => item !== "L"): [...prev, "L"])}
+              value={"L"}
+              onClick={() =>
+                setSizes((prev) =>
+                  prev.includes("L")
+                    ? prev.filter((item) => item !== "L")
+                    : [...prev, "L"]
+                )
+              }
               className={
                 sizes.includes("L")
                   ? "bg-blue-200 border-2 border-black cursor-pointer py-1 px-3 "
@@ -173,7 +217,13 @@ const AddProduct = ({token}) => {
             <input
               type="button"
               value={"XL"}
-              onClick={() => setSizes(prev => prev.includes("XL") ? prev.filter(item => item !== "XL"): [...prev, "XL"])}
+              onClick={() =>
+                setSizes((prev) =>
+                  prev.includes("XL")
+                    ? prev.filter((item) => item !== "XL")
+                    : [...prev, "XL"]
+                )
+              }
               className={
                 sizes.includes("XL")
                   ? "bg-blue-200 border-2 border-black cursor-pointer py-1 px-3 "
@@ -183,7 +233,13 @@ const AddProduct = ({token}) => {
             <input
               type="button"
               value={"XXL"}
-              onClick={() => setSizes(prev => prev.includes("XXL") ? prev.filter(item => item !== "XXL"): [...prev, "XXL"])}
+              onClick={() =>
+                setSizes((prev) =>
+                  prev.includes("XXL")
+                    ? prev.filter((item) => item !== "XXL")
+                    : [...prev, "XXL"]
+                )
+              }
               className={
                 sizes.includes("XXL")
                   ? "bg-blue-200 border-2 border-black cursor-pointer py-1 px-3 "
@@ -212,7 +268,8 @@ const AddProduct = ({token}) => {
             )}
           </button>
         </form>
-      </div>  </>
+      </div>{" "}
+    </>
   );
 };
 

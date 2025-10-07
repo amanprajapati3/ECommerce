@@ -4,6 +4,7 @@ import {
   deleteProduct,
   listProduct,
   singleProduct,
+  updateProduct,
 } from "../controller/Product_controller.js";
 import upload from "../middleware/Multer.js";
 import adminAuth from "../middleware/AdminAuth.js";
@@ -16,6 +17,16 @@ productRoute.post(
     { name: "image1", maxCount: 1 },
   ]), adminAuth,
   addProduct
+);
+
+
+productRoute.put(
+  '/update',
+  upload.fields([
+    { name: "image1", maxCount: 1 },
+  ]), 
+  adminAuth,
+  updateProduct
 );
 productRoute.delete('/remove', adminAuth, deleteProduct);
 productRoute.get('/singleProduct', singleProduct);

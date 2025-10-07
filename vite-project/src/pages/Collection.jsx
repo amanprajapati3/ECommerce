@@ -86,11 +86,11 @@ const Collection = () => {
 
   return (
     <>
-      <div className="flex lg:gap-5 sm:mx-10 mx-2 mt-5">
-        <div className="lg:w-1/6 sm:w-1/4 hidden sm:block">
+      <div className="flex  sm:ml-10 gap-5 mt-10">
+        <div className="lg:w-1/6 sm:w-1/4 hidden  sm:block">
           <h1 className="font-medium pb-7">FILTERS</h1>
 
-          <div className="p-5 border-2 rounded-md border-gray-400">
+          <div className="p-5 border-2 rounded-md  border-gray-400">
             <h1 className="font-bold">CATEGORIES</h1>
             <ul>
               <li className="py-2 cursor-pointer">
@@ -144,16 +144,15 @@ const Collection = () => {
           </div>
         </div>
 
-        <div className="lg:5/6 sm:w-3/4 w-full ">
-          <div className="flex gap-10  outline-none justify-between">
-            <div className="flex mb-2">
-              <h1 className="text-left sm:text-2xl  ">ALL COLLECTION</h1>
-              <div className="md:w-[70px] sm:w-[30px] w-0 mt-3 ml-2 bg-gray-800 h-[2px] font-bold"></div>
-            </div>
+        <div className="lg:w-5/6 sm:mr-5 sm:w-3/4 w-full ">
+          <div className="flex gap-10 mb-10  outline-none justify-between">
+           <div className=" ml-4">
+          <h1 className="md:text-3xl text-xl font-mono font-semibold">All Collection</h1>
+        </div>
             <div className="">
               <select
                 onChange={(e) => setSortType(e.target.value)}
-                className="md:px-3 py-1 rounded-md bg-amber-600 text-white sm:w-full w-[80px]"
+                className="md:px-3 mx-1 py-1 rounded-md bg-amber-600 text-white sm:w-full w-[80px]"
               >
                 <option value="relevant">Sort by: Relevant</option>
                 <option value="High_to_Low">Sort by: High to Low</option>
@@ -163,7 +162,7 @@ const Collection = () => {
           </div>
 
           {/* Mobile Filters */}
-          <div className="sm:hidden mb-5 ">
+          <div className="sm:hidden mb-5 ml-2 ">
             <div className="flex w-fit bg-teal-700 hover:bg-teal-500 active:bg-teal-700 active:scale-95 text-white px-4 py-2 rounded-md text-left font-medium gap-2">
               <p>Filter</p>
               <button
@@ -209,7 +208,7 @@ const Collection = () => {
             )}
           </div>
 
-          <div className="flex justify-center text-center mb-10 flex-wrap sm:gap-6 gap-2">
+          <div className="sm:flex justify-center grid grid-cols-2 text-center mb-10 flex-wrap sm:gap-1  ">
             {loader ? (
               <Loader />
             ) : (
@@ -221,6 +220,7 @@ const Collection = () => {
                     name={item.name}
                     image={item.image}
                     price={item.price}
+                    originalPrice={item.OriginalPrice}
                   />
                 </div>
               ))

@@ -58,7 +58,7 @@ const Product = () => {
                   onClick={() => setsize(item)}
                   key={index}
                   className={`px-3 py-2 cursor-pointer ${
-                    item === size ? "border-2 border-gray-600" : ""
+                    item === size ? " bg-orange-300" : ""
                   }`}
                 >
                   {item}
@@ -72,41 +72,6 @@ const Product = () => {
               100% Original product. <br /> Cash on delivery on this product.{" "}
               <br />
               Easy return and exchange policy within 7 days.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="md:mx-20 flex justify-center mx-8 my-10">
-        <div>
-          <div className="flex justify-center">
-            <button className="px-6 py-2 font-bold border-2 border-gray-300">
-              Description
-            </button>
-            <button className="px-6 py-2 font-bold border-2 border-gray-300">
-              Review(122)
-            </button>
-          </div>
-          <div className="flex justify-center  md:mx-20 mx-8">
-            <p className="py-10 text-center">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto,
-              aut labore? Quas asperiores tenetur perspiciatis debitis
-              distinctio, ab deleniti et, error soluta ipsam praesentium enim
-              magni libero atque quibusdam ipsum explicabo{" "}
-              <span className="hidden sm:block">
-                laboriosam officiis magnam expedita repudiandae, iusto ad
-                blanditiis maiores! Maxime enim debitis voluptatum et numquam
-                illum odit, alias cum?
-              </span>{" "}
-              <br />
-              <br />
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi,
-              magnam temporibus.{" "}
-              <span className="hidden sm:block">
-                Itaque quo facere beatae deleniti! Illum voluptatum ullam
-                iste!deleniti et, error soluta ipsam praesentium enim magni
-                libero atque quibusdam ipsum explicabo laboriosam officiis
-                magnam expedita repudiandae, iusto ad blanditiis maiores!
-              </span>
             </p>
           </div>
         </div>
