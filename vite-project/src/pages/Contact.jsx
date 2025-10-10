@@ -29,9 +29,9 @@ const Contact = () => {
         <div className="text-center">
           <h1 className="text-xl font-bold py-3">Subscribe now & get 20% off</h1>
           <p className="pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum perferendis quaerat aut.</p>
-          <div className="flex justify-center gap-2 ">
-             <input type="email" placeholder="Enter Your Email" className="text-gray-900 md:w-[360px] px-3 py-3 rounded-md outline-none border-2 border-gray-400 focus:bg-gray-300 focus:border-gray-400" />
-             <button className="py-2 px-5 rounded-md cursor-pointer bg-black text-white hover:text-black hover:bg-white hover:border-2 transition-all duration-500">Subscribe</button>
+          <div className="flex justify-center ">
+             <input type="email" placeholder="Enter Your Email" className="text-gray-900 md:w-[360px] px-3 py-3 rounded-tl-md rounded-bl-md  outline-none border-2 border-gray-400 focus:bg-gray-300 focus:border-gray-400" />
+             <button className="py-2 px-5 rounded-tr-md rounded-br-md cursor-pointer bg-black text-white hover:text-black hover:bg-white hover:border-2 transition-all duration-500">Subscribe</button>
           </div>
 
         </div>

@@ -142,7 +142,7 @@ const PlaceOrder = () => {
               onSubmit={onSubmitHandler}
             >
               <div className=" w-full p-5">
-                <div className="sm:flex  gap-3">
+                <div className="flex  gap-3">
                   <input
                     type="text"
                     placeholder="First name"

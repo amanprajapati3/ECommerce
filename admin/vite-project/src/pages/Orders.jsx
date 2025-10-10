@@ -59,7 +59,7 @@ const Orders = ({ token }) => {
       <div className="p-2">
         <h1 className="text-4xl mb-5">
           <b>
-            <i>Orders</i>
+           Orders
           </b>
         </h1>
         <div className="space-y-5 flex justify-center gap-2 flex-wrap">
@@ -104,7 +104,7 @@ const Orders = ({ token }) => {
                 </div>
 
                 <div className="font-bold text-center md:text-start flex justify-center items-center">
-                  <p>${order.amount}</p>
+                  <p>Rs.{order.amount}</p>
                 </div>
 
                 <div className="flex justify-center items-center">

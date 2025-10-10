@@ -6,6 +6,7 @@ import ProductItems from "../components/ProductItems.jsx";
 import { NavLink } from "react-router-dom";
 import Loader from "../components/Loader.jsx";
 import HeroSection from "./HeroSection.jsx";
+import VideoSection from "./VideoSection.jsx";
 
 const Home = () => {
   const { products, loader } = useContext(ShopContext);
@@ -32,6 +33,10 @@ const Home = () => {
             className="sm:w-20 w-12 "
           />
         </a>
+      </div>
+
+      <div className="flex justify-center">
+        {loader ? <Loader/> : <VideoSection/>}
       </div>
 
       {/* collection section */}
@@ -164,7 +169,7 @@ const Home = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
             perferendis aut.
           </p>
-          <div className="flex justify-center sm:gap-2 mx-5 sm:mx-0 ">
+          <div className="flex justify-center mx-5 sm:mx-0 ">
             <input
               type="email"
               placeholder="Enter Your Email"

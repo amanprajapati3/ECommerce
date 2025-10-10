@@ -59,13 +59,13 @@ const List = ({ token }) => {
         </b>
       </h1>
 
-      <div className="flex flex-wrap sm:justify-start justify-center mt-4 ">
+      <div className="md:flex justify-center grid grid-cols-2 text-center mb-10 flex-wrap sm:gap-1  ">
         {loader ? (
           <Loader />
         ) : (
           products.map((items, index) => (
             <div
-              className="flex sm:w-[250px] w-[145px] justify-center h-fit p-1 gap-1"
+              className="md:w-[240px] relative w-full overflow-hidden hover:shadow-2xl hover:shadow-gray-200 bg-gray-200"
               key={index}
             >
               <div className="">
@@ -84,7 +84,7 @@ const List = ({ token }) => {
                   </p>
                 </div>
 
-                <p className="text-center font-bold text-[13px] md:text-[16px]">Price : ${items.price}</p>
+                <p className="text-center font-bold text-[13px] md:text-[16px]">Price : Rs.{items.price}</p>
 
                 {/* Buttons below */}
                 <div className="flex justify-between mt-3 px-2">
