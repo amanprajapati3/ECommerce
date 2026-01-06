@@ -4,20 +4,24 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import { motion } from 'framer-motion';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 
 const App = () => {
   const location = useLocation();
 
+  // Initialize AOS
   useEffect(() => {
-    AOS.init({ duration: 800, once: true }); 
+    AOS.init({ duration: 800, once: true });
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>
       <Header />
 
-      
       <motion.div
         key={location.pathname}
         initial={{ opacity: 0, y: 30 }}

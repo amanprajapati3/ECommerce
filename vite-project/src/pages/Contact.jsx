@@ -16,7 +16,7 @@ const Contact = () => {
             <h1 className="font-bold py-5 text-xl">Our Store</h1>
             <p>Om enclave Part-l <br /> Faridabad, Haryana, Indian</p>
             <p className="pt-5">
-              Tel: +91 1234-5678-97 <br />Email: amanprajapati9871@gmail.com
+              Tel: +91 7217814501 <br />Email: amanprajapati9871@gmail.com
             </p>
             <h1 className="font-bold py-5 text-xl">Careers at Forever</h1>
             <p>Learn more about our teams and job openings.</p>

@@ -2,9 +2,8 @@ import {  useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaRegHeart, FaHeart, FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
-import { ShopContext } from "../context/ShopContext";
 
-const ProductItems = ({ id, image, name, price, originalPrice }) => {
+const ProductItems = ({ id, image1, image2, name, price, originalPrice }) => {
 
   const rating = (Math.random() * 1.5 + 3.5).toFixed(1);
   const discountPercent =
@@ -13,6 +12,9 @@ const ProductItems = ({ id, image, name, price, originalPrice }) => {
       : 0;
 
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+
+   const currentImage = isHover && image2 ? image2 : image1;
 
   // Check if this product is already in wishlist on first render
   useEffect(() => {
@@ -36,7 +38,7 @@ const ProductItems = ({ id, image, name, price, originalPrice }) => {
       toast("Removed from wishlist", { icon: "❌" });
     } else {
       // Add to wishlist
-      wishlist.push({ id, image, name, price });
+      wishlist.push({ id, image1, name, price });
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
       setIsWishlisted(true);
       toast.success("Added to wishlist!");
@@ -44,7 +46,7 @@ const ProductItems = ({ id, image, name, price, originalPrice }) => {
   };
 
   return (
-    <div className="sm:w-[240px] relative w-full overflow-hidden hover:shadow-2xl hover:shadow-gray-200 bg-gray-200">
+    <div onMouseEnter={()=> setIsHover(true)} onMouseLeave={()=> setIsHover(false)} className="sm:w-[240px] relative w-full overflow-hidden hover:shadow-2xl hover:shadow-gray-200 bg-gray-200">
       <button
         onClick={toggleWishlist}
         className="absolute top-2 right-2 bg-white rounded-full p-1 z-10 shadow-md transition-all duration-200 cursor-pointer active:scale-125"
@@ -57,10 +59,11 @@ const ProductItems = ({ id, image, name, price, originalPrice }) => {
         )}
       </button>
 
-      <NavLink to={`/product/${id}`}>
-        <div className="relative">
+      <NavLink to={`/product/${id}`} onFocus={() => setIsHover(true)}
+        onBlur={() => setIsHover(false)}>
+        <div className="relative" >
           <img
-            src={image}
+            src={currentImage}
             alt={name}
             className="w-full sm:h-[240px] hover:scale-105 transition-all duration-300 object-cover"
           />
@@ -84,7 +87,7 @@ const ProductItems = ({ id, image, name, price, originalPrice }) => {
             </p>
           )}
         </div>
-      </NavLink>  
+      </NavLink>
 
     </div>
   );

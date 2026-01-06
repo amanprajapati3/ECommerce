@@ -70,7 +70,7 @@ const List = ({ token }) => {
             >
               <div className="">
                 <img
-                  src={items.image}
+                  src={items.images[0]}
                   alt=""
                   className="w-full sm:h-[230px]"
                 />

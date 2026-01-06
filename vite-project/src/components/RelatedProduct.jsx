@@ -24,7 +24,8 @@ const RelatedProduct = ({ category, subCategory }) => {
                 key={index}
                 id={item._id}
                 name={item.name}
-                image={item.image}
+                image1={item.images[0]}
+            image2={item.images[1]}
                 price={item.price}
                 originalPrice={item.OriginalPrice}
               />

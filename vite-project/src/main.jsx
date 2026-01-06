@@ -20,6 +20,7 @@ import Kids from "./pages/Kids.jsx";
 import Mens from "./pages/Mens.jsx";
 import Women from "./pages/Women.jsx";
 import Wishlist from "./pages/Wishlist.jsx";
+import User_profile from "./pages/User_profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path: "/wishlist",
         element: <Wishlist/>
+      },
+      {
+        path: "/profile",
+        element: <User_profile/>
       }
     ],
   },

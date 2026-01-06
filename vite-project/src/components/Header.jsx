@@ -11,11 +11,15 @@ import { CgProfile } from "react-icons/cg";
 import { BsCart4, BsCollection } from "react-icons/bs";
 import { AiOutlineHome } from "react-icons/ai";
 import { FaRegHeart } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import "./animation.css";
 
 const Header = () => {
   const [search_bar, setSearch_bar] = useState(true);
   const [IsMenuOpen, SetIsMenuOpen] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { search, setSearch, getCartCount, token, setToken, setCartItem } =
     useContext(ShopContext);
@@ -34,9 +38,16 @@ const Header = () => {
     setCartItem({});
     navigate("/login");
   };
+  useEffect(()=>{
+    SetIsMenuOpen(true)
+  }, [location.pathname])
 
   return (
     <>
+    <div className="bg-red-700 overflow-hidden text-white text-xl md:text-2xl py-3" >
+      <h1 className="text-center" id="marquee">GET 15% OFF on your First Order</h1>
+
+    </div>
       <div className="flex sticky z-20 top-0 backdrop-blur-2xl justify-between px-5 lg:px-16 pt-2 sm:pt-5 text-[12px] sm:mt-0 sm:px-10">
         {/* logo */}
         <div className="">
@@ -208,6 +219,16 @@ const Header = () => {
           <NavLink to="/contact">
             <p>Contact</p>
           </NavLink>
+        </li>
+        <li className=" transition-all duration-300 py-2 ">
+          <p className="cursor-pointer  hover:text-black">
+            <NavLink to="/profile">My profile</NavLink>
+          </p>
+        </li>
+        <li className=" transition-all duration-300 py-2 ">
+          <p className="cursor-pointer  hover:text-black">
+            <NavLink to="/order">My Orders</NavLink>
+          </p>
         </li>
         <li className=" transition-all duration-300  ">
           {token ? (

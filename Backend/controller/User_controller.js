@@ -34,7 +34,7 @@ const Login = async (req, res) => {
 // for user Register
 const Register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, phone } = req.body;
 
     // checking if user already exist
     const exist = await UserModel.findOne({ email });
@@ -54,6 +54,7 @@ const Register = async (req, res) => {
     const newUser = new UserModel({
       name,
       email,
+      phone,
       password: HashedPassword,
     });
     const user = await newUser.save();
@@ -84,4 +85,21 @@ const AdminLogin = async (req, res) => {
   }
 };
 
-export { Login, Register, AdminLogin };
+const UserData = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await UserModel.findById(userId).select("-password");
+
+    if (!user) {
+      return res.json({ success: false, msg: "User not found" });
+    }
+
+    res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, msg: error.message });
+  }
+};
+
+
+export { Login, Register, AdminLogin, UserData };

@@ -17,6 +17,10 @@ const Home = () => {
 
   return (
     <>
+
+    {/* discount section */}
+
+
       {/* hero page */}
       <HeroSection />
 
@@ -58,13 +62,14 @@ const Home = () => {
           {loader ? (
             <Loader />
           ) : (
-            men.slice(0, 4).map((item, index) => (
+            men.slice(0, 5).map((item, index) => (
               <div className=" ">
                 <ProductItems
                   key={index}
                   id={item._id}
                   name={item.name}
-                  image={item.image}
+                  image1={item.images[0]}
+            image2={item.images[1]}
                   price={item.price}
                    originalPrice={item.OriginalPrice}
                 />
@@ -96,13 +101,14 @@ const Home = () => {
           {loader ? (
             <Loader />
           ) : (
-            women.slice(0, 4).map((item, index) => (
+            women.slice(0, 5).map((item, index) => (
               <div className=" ">
                 <ProductItems
                   key={index}
                   id={item._id}
                   name={item.name}
-                  image={item.image}
+                  image1={item.images[0]}
+            image2={item.images[1]}
                   price={item.price}
                    originalPrice={item.OriginalPrice}
                 />
@@ -132,13 +138,14 @@ const Home = () => {
           {loader ? (
             <Loader />
           ) : (
-            kid.slice(0, 4).map((item, index) => (
+            kid.slice(0, 5).map((item, index) => (
               <div className=" ">
                 <ProductItems
                   key={index}
                   id={item._id}
                   name={item.name}
-                  image={item.image}
+                  image1={item.images[0]}
+            image2={item.images[1]}
                   price={item.price}
                    originalPrice={item.OriginalPrice}
                 />

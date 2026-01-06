@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { assets } from "../assets/frontend_assets/assets";
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -27,13 +28,30 @@ const Wishlist = () => {
         </h2>
 
         {wishlist.length === 0 ? (
-          <p className="text-center text-gray-500 mt-10">No items in wishlist.</p>
+          <div className="flex justify-center items-center mt-10">
+            <div>
+              <img src={assets.Wishlist} alt="" />
+              <p className="text-center font-bold text-xl">
+                Your Wishlist is empty
+              </p>
+              <center>
+              <NavLink to={"/"}>
+                <button className="py-2 px-10 bg-black text-white rounded-sm sm:text-xl sm:px-16 my-5 ">
+                  Add Products
+                </button>
+              </NavLink>
+              </center>
+            </div>
+          </div>
         ) : (
           <div className="sm:flex justify-center grid grid-cols-2 mb-10 flex-wrap sm:gap-1">
             {wishlist.map((item) => {
               const discountPercent =
                 item.OriginalPrice && item.OriginalPrice > item.price
-                  ? Math.round(((item.OriginalPrice - item.price) / item.OriginalPrice) * 100)
+                  ? Math.round(
+                      ((item.OriginalPrice - item.price) / item.OriginalPrice) *
+                        100
+                    )
                   : 0;
 
               return (

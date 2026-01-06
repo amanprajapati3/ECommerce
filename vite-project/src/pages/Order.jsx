@@ -83,7 +83,7 @@ const Order = () => {
                           <p className="text-center">{item.name}</p>
                         </b>
                         <div className="flex gap-4  justify-center sm:mt-3">
-                          <p>${item.price} </p>
+                          <p>Rs.{item.price} </p>
                           <p>Quantity : {item.quantity}</p>
                           <p>Size : {item.size}</p>
                         </div>

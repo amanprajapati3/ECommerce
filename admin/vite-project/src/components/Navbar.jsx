@@ -4,13 +4,18 @@ import { CgMenuRight } from "react-icons/cg";
 import { GiCrossedBones } from "react-icons/gi";
 import SideBar from "./SideBar";
 import { NavLink } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 const Navbar = ({ setToken }) => {
   const [isMenu, setIsMenu] = useState(false);
+  const location = useLocation();
 
   const toggleHandler = () => {
     setIsMenu(!isMenu);
   };
+  useEffect(()=>{
+    setIsMenu(false);
+  }, [location.pathname])
 
   return (
     <>
